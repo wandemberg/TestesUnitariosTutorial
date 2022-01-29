@@ -43,5 +43,15 @@ class AtaqueTests(unittest.TestCase):
         self.assertEqual(ataque.armasCorretasNaPosicaoCorreta, 2)
         self.assertEqual(ataque.armasCorretasNaPosicaoErrada, 2)
 
+class AtaqueSpy(Ataque):
+    def __init__(self, armas):
+        Ataque.__init__(self, armas)
+        self.chamouAcertouAtaque = 0
+
+    def acertouAtaque(self):
+        Ataque.acertouAtaque(self)
+        self.chamouAcertouAtaque += 1
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
